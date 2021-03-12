@@ -53,9 +53,6 @@ pylint==2.4.4
 pylint-django==2.4.2
 pylint-plugin-utils==0.6
 pyparsing==2.4.2
-PyQt5==5.13.0
-PyQt5-sip==12.7.1
-pyqt5-tools==5.13.0.1.5
 pyTelegramBotAPI==0.3.0
 pytest==5.2.2
 python-dotenv==0.13.0
