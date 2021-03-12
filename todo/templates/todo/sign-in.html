@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        {% csrf_token %}
+        <form  method='POST'>
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username..." class="form-control">
+            {% csrf_token %}
+            <input type="password" name="password" placeholder="Password..." class="form-control" >
+            {% csrf_token %}
+            <input class="btn login_btn" type="submit" value="Login">
+
+        </form>
+    </body>
+</html>

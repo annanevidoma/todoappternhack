@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To do</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous"
+      />
+        
+        <style>
+            * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            }
+            body {
+            background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            color: white;
+            font-family: "Poppins", sans-serif;
+            min-height: 100vh;
+            }
+            header {
+            font-size: 2rem;
+            background-color: #f7fffe;
+            color:#fda085;
+            
+            }
+
+            input{
+            width:500px;
+            }
+            form {
+            min-height: 20vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+            form input,
+            form button {
+            padding: 0.5rem;
+            font-size: 2rem;
+            border: none;
+            background: white;
+            }
+            form button {
+            color: #ff6f47;
+            background: #f7fffe;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            }
+            form button:hover {
+            background: #ff6f47;
+            color: white;
+            }
+
+            .todo-container {
+            display: flex;
+            margin: 0px;
+            justify-content: center;
+            align-items: center;
+            }
+
+            .todo-list {
+            min-width: 30%;
+            list-style: none;
+            align-items: center;
+            margin: 0px;
+            
+            }
+
+            .todo {
+            width: 450px;
+            height: 64px;
+            margin: 0rem;
+            background: white;
+            font-size: 1.5rem;
+            color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 1s ease;
+            }
+            .todoDiv {
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0px;
+            }
+            .add-todo-form{
+            display:flex;
+            margin-right: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Tasks</h1>
+            <a href = "/sign_up">Sign up</a>
+            <a href = "/sign_in">Sign in</a>
+        </header>
+                <div id="add-task-form">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="add-todo-form">
+                            {{ form }} <button class="todo-button btn btn-outline-dark" type="submit">Add</button>
+                        </div>
+
+                    </form>
+                </div>
+            <div class="todo-container">   
+                <ul class="todo-list">
+                    {% for todo in tasks%}
+                    <div class="todoDiv">
+                        <li class="todo task ">{{todo.task}}</li>
+                        {% csrf_token %}
+                        <form class = "done" action="{% url 'todo:completed' todo.id %}" method="post">
+                              {% csrf_token %}
+                              <button type='submit'><i class="fas fa-check"></i></button>
+                        </form>
+                    </div> 
+                    {%endfor%}
+                </ul> 
+            </div>
+            
+     </div>
+    
+    
+    </body>
+</html>

@@ -1,0 +1,1 @@
+web: guinicorn HomeProject.wsgi --log-file-
