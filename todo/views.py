@@ -44,7 +44,7 @@ def sign_up(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request,user)
-            return redirect('')
+            return redirect('/')
     context['form']=form
     return render(request,'todo/sign-up.html', context)
 
